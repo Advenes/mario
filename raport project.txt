@@ -1,1 +1,20 @@
+MoSCoW
+Must have:
+ - basic logic
+ - movement
+ - game level
+
+Should have:
+ - graphics
+ - animations
+ - coins
+
+Could have:
+ - more levels
+
+PM - Piotr
+Dev - Nikodem
+Artist/Level Designer - Wojciech
+Refaktoryzacja Kodu/Sound designer - Vanessa
+
 RAPORT PROJEKTU:
