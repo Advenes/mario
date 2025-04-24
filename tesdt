@@ -1,0 +1,155 @@
+#include "./headers/entity.h"
+
+bool Player::grounded() {
+	return true;
+}
+
+void Player::update() {
+	if (veloX < 0) {
+		veloX -= 0.1;
+	}
+	if (veloY < 0) {
+		veloY -= 0.1;
+	}
+
+
+}
+
+#pragma once
+
+class Position {
+public:
+	int x = 0;
+	int y = 0;
+};
+
+enum class Type {
+	TYPENULL = 0,
+	PLAYER = 1,
+};
+
+class Entity {
+public:
+	Position pos;
+	int health;
+	Type type;
+
+	Entity(Position pos, int health, Type type): pos(pos),health(health),type(type) {
+
+	}
+
+
+
+
+};
+
+class Player : public Entity {
+public:
+	int veloX = 0;
+	int veloY = 0;
+	int maxSpeed = 10;
+
+	Player(Position pos, int health, Type type) : Entity(pos, health, type) {
+
+
+
+	}
+
+	void jump();
+	void update();
+	bool grounded();
+
+};
+
+
+#pragma once
+#include "lib.h"	// an external header in the static lib project
+
+void GameDraw()
+{
+    BeginDrawing();
+    ClearBackground(DARKGRAY);
+
+    DrawText("Hello Raylib!", 10, 10, 20, GetTextColor());
+
+    EndDrawing();
+}
+#include "./headers/entity.h"
+
+bool Player::grounded() {
+	return true;
+}
+
+void Player::update() {
+	if (veloX < 0) {
+		veloX -= 0.1;
+	}
+	if (veloY < 0) {
+		veloY -= 0.1;
+	}
+
+
+}
+
+#pragma once
+#include "lib.h"
+#include <vector>
+
+enum class Field {
+	EMPTY = 0,
+	FLOOR = 1,
+	WALL = 2
+};
+
+class Map {
+	std::vector<std::vector<Field>> mapArr;
+
+
+};
+
+
+
+#include "raylib.h"
+#include "raymath.h"
+
+#include "game.h"   // an external header in this project
+#include "lib.h"	// an external header in the static lib project
+
+#include "headers/entity.h"
+
+
+void GameInit()
+{
+    SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_RESIZABLE);
+    InitWindow(InitialWidth, InitialHeight, "Example");
+    SetTargetFPS(144);
+
+    // load resources
+}
+
+void GameCleanup()
+{
+    // unload resources
+
+    CloseWindow();
+}
+
+void inputHandler(Player player) {
+    if (IsKeyPressed(KEY_W)) {
+        player.jump();
+    }
+    else if () {
+
+    }
+    
+}
+
+int main()
+{
+    GameInit();
+
+
+    GameCleanup();
+
+    return 0;
+}
